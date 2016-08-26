@@ -26,6 +26,7 @@ class Volume(resource.Resource):
     allow_create = True
     allow_delete = True
     allow_update = True
+    allow_list = True
 
     # Properties
     #: A ID representing this volume.

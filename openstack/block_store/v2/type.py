@@ -24,6 +24,7 @@ class Type(resource.Resource):
     allow_retrieve = True
     allow_create = True
     allow_delete = True
+    allow_list = True
 
     # Properties
     #: A ID representing this type.

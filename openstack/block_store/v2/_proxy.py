@@ -60,6 +60,20 @@ class Proxy(proxy.BaseProxy):
         self._delete(_snapshot.Snapshot, snapshot,
                      ignore_missing=ignore_missing)
 
+    def find_snapshot(self, name_or_id, ignore_missing=True):
+        """Find a single snapshot
+
+        :param name_or_id: The name or ID of a snapshot.
+        :param bool ignore_missing: When set to ``False``
+                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    raised when the resource does not exist.
+                    When set to ``True``, None will be returned when
+                    attempting to find a nonexistent resource.
+        :returns: One :class:`~openstack.block_store.v2._snapshot.Snapshot` or None
+        """
+        return self._find(_snapshot.Snapshot, name_or_id,
+                          ignore_missing=ignore_missing)
+
     def get_type(self, type):
         """Get a single type
 
@@ -99,6 +113,20 @@ class Proxy(proxy.BaseProxy):
         """
         self._delete(_type.Type, type, ignore_missing=ignore_missing)
 
+    def find_type(self, name_or_id, ignore_missing=True):
+        """Find a single type
+
+        :param name_or_id: The name or ID of a type.
+        :param bool ignore_missing: When set to ``False``
+                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    raised when the resource does not exist.
+                    When set to ``True``, None will be returned when
+                    attempting to find a nonexistent resource.
+        :returns: One :class:`~openstack.block_store.v2.type.Type` or None
+        """
+        return self._find(_type.Type, name_or_id,
+                          ignore_missing=ignore_missing)
+
     def get_volume(self, volume):
         """Get a single volume
 
@@ -137,3 +165,18 @@ class Proxy(proxy.BaseProxy):
         :returns: ``None``
         """
         self._delete(_volume.Volume, volume, ignore_missing=ignore_missing)
+
+    def find_volume(self, name_or_id, ignore_missing=True):
+        """Find a single volume
+
+        :param name_or_id: The name or ID of a volume.
+        :param bool ignore_missing: When set to ``False``
+                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    raised when the resource does not exist.
+                    When set to ``True``, None will be returned when
+                    attempting to find a nonexistent resource.
+        :returns: One :class:`~openstack.block_store.v2.volume.Volume` or None
+        """
+        return self._find(_volume.Volume, name_or_id,
+                          ignore_missing=ignore_missing)
+
